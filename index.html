@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.min.js" integrity="sha512-HTENHrkQ/P0NGDFd5nk6ibVtCkcM7jhr2c7GyvXp5O+4X6O5cQO9AhqFzM+MdeBivsX7Hoys2J7pp2wdgMpCvw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+    const socket = io({
+        auth: {
+            token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0IiwiaWF0IjoxNjcyNTkxNTcyLCJleHAiOjE2NzI2Nzc5NzIsIm5iZiI6MTY3MjU5MTU3MiwianRpIjoiZDUwRm1sN3lFeHg5S0pMNiIsInN1YiI6IjEiLCJwcnYiOiJkZGExZjdhN2M3MmI3ZjIzYjM2ZDY4NmYyZmU2YTlkNDVhMzFiNDZlIn0.z7XekVm_X5fLw34smDIWIYoUhh6lhbwFnc8jv3xqA6E"
+        }
+    });
+
+    socket.on('message', (message) =>  {
+        console.log(message);
+    })
+
+    function sendData(value){
+        socket.emit('message',value);
+    }
+
+</script>
+<input type="text" onchange="sendData(this.value)">
+</body>
+</html>
